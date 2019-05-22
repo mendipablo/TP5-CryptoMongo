@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/one.css') }}">
+{%for doc in documents %}
+<section class="container">
+        <h2>{{ doc["name"] }}</h2>
+        <small>{{ doc["id"] }}<small>
+            <div class="row">
+            <article class="card fl-left">
+            <section class="date">
+            <time datetime="">
+            <span>
+            # {{ doc["rank"] }}º
+            </span>
+           
+           </time>
+    </section>
+    <section class="card-cont">
+            <small> </small>
+            <h4> {{ doc["symbol"] }} </h4>
+            <div class="even-date">
+             
+             <time>
+               <span>1h: {{ doc["percent_change_1h"] }} % </span> <br>
+               <span>24h: {{ doc["percent_change_24h"] }} %</span> <br>
+               <span>7d: {{ doc["percent_change_7d"] }} %</span>
+             </time>
+            </div>
+            <div class="even-info">
+              <i class="fa fa-map-marker"></i>
+              
+              <p> U$S {{ doc["price_usd"] }}</p>
+              <p>  </p>
+              <p> Ratio BTC {{ doc["price_btc"] }}</p>
+            </div>
+    </section>
+</section>    
+
+<form method="POST" action="http://localhost:5000/remove?key={{ doc['name'] }}">
+    <div class="form-group">
+       
+</div>
+<input class="btn btn-primary" type="submit" value="Eliminar" onclick="return alert('Seguro?')">
+</form>
+{%endfor%}
+{%endblock%}

@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% block content %}
+<thead>
+        <tr>
+                <th>Rank</th>
+                <th>Nombre</th>
+                <th>ID</th>
+                <th>Simbolo</th>
+                <th>Precio U$S</th>
+                <th>Precio BTC</th>
+                <th>Oferta Disponible</th>
+                <th>Último Cambio</th>
+        </tr>
+      </thead>
+      {%for doc in documents %}
+      <tbody>
+        <tr>
+            <td>{{ doc["rank"] }}</td>
+            <td><a href="search?key={{ doc['name'] }}">{{ doc["name"] }}</a> </td>
+            <td>{{ doc["id"] }}</td>
+            <td>{{ doc["symbol"] }}</td>
+            <td>{{ doc["price_usd"] }}</td>
+            <td>{{ doc["price_btc"] }}</td>
+            <td>{{ doc["available_supply"] }} / {{ doc["max_supply"] }}</td>
+            <td>{{ doc["last_updated"] }}</td>
+        </tr>
+      </tbody>
+    {% endfor%}
+    </table>
+  </div>
+  {% endblock %}
